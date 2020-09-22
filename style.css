@@ -9,8 +9,8 @@ body {
 .offset:before {
   display: block;
   content: "";
-  height: 4rem;
-  margin-top: 4rem;
+  height: 2rem;
+  margin-top: 2rem;
 }
 
 
@@ -112,6 +112,29 @@ h3.heading {
 }
 .publication li {
   font-size: 1.1rem;
+}
+
+
+/*--- Music Section --*/
+
+.fixed {
+  background-image: url(img/guitar1.png);
+  z-index: -1;
+}
+.dark {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 7rem 2rem;
+}
+.fixed-background h3 {
+  margin-bottom: 2rem;
+}
+.fixed-background p {
+  margin-top: 1.5rem; 
+}
+.music img {
+  width: 100%;
+/*  border-radius: 50%;*/
 }
 
 
