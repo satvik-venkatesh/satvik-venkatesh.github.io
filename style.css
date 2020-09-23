@@ -259,4 +259,15 @@ h3.heading-blog {
   display: block;
   margin: 0 auto;
 }
+.narrow-about {
+  width: 95%;
+  margin: 1.5rem auto;
+  padding-top: 2rem;
+}
+.narrow-publication {
+  width: 100%;
+  margin: 1.5rem auto;
+  padding-top: 2rem;
+}
+
 }

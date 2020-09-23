@@ -212,4 +212,9 @@ h3.heading-blog {
   display: block;
   margin: 0 auto;
 }
+.narrow {
+  width: 85%;
+  margin: 1.5rem auto;
+  padding-top: 2rem;
+}
 }
