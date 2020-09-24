@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Data Generators with Keras</title>
+	<link rel="stylesheet" href="../bootstrap-4.1.3-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style-blog.css">
+	<link rel="stylesheet" href="../css/fixed.css">
+</head>
+
+<body data-spy="scroll" data-target="#navbarResponsive">
+
+
+<!--- Navigation -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<a class="navbar-brand" href="index.html#home"><img src="../img/piano3.png"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="../index.html#home">Home</a>				
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../index.html#publications">Publications</a>				
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../index.html#music">Music</a>				
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../index.html#about">About me</a>				
+			</li>			
+			<li class="nav-item">
+				<a class="nav-link" href="#blog-post">Blog</a>
+		</ul>
+	</div>
+</nav>
+
+<!--- End Navigation -->
+
+
+<!--- Start Blog Section -->
+<div id="blog-post">
+
+<!--- Start Jumbotron -->
+<div class="jumbotron text-center">
+	<div class="narrow">
+
+		<div class="col-12">
+			<h2 class="heading-blog">Data Generators with Keras and Tensorflow on Google Colab</h2>
+			<div class="heading-underline"></div>			
+		</div>
+		<div>
+			<a class="btn btn-outline-dark btn-lg" href="post-test-1.html"> <span class="fab fa-github"></span> View on GitHub</a>
+
+		</div>
+		<div class="row text-justify">
+
+			<div class="col-md-12">
+				<div class="blog-body">
+					<h4>1. &nbsp; Introduction</h4>
+					<p>This blog post is a tutorial on using data generators with Keras on Google Colab. Data generators allow you to feed data into Keras in real-time while training the model. This way, you can make modifications to the data before feeding it to the neural network or even load it from the secondary memory. Data generators have two use cases — (1) Data augmentation and (2) loading a dataset that does not fit into the RAM.</p>
+
+					<p>There are many posts out there that explain the use of data generators. Most of them explain in the context of using a local computer. Recently, many people have started using Google Colab for machine learning projects. Using data generators with Google Colab was trickier than I expected. For example, the delay while directly loading files from Google drive. Therefore, this post explains some of the dos and don'ts while using data generators with Google Colab. My research is focused on audio classification. So, some of my opinions might be biased towards an audio-context. Below is the definition of a data generator.</p>
+
+					<script src="https://gist.github.com/satvik-venkatesh/b2419dabcf8458daf3161e33f777d391.js?file=data-gen.py"></script>
+
+					<h4>2. &nbsp; Save individual examples as NumPy arrays</h4>
+					<p>Format each example in the dataset as a separate NumPy array. Store the train, validation, and test data into separate directories. If you have thousands of examples, the 'glob' module is not good at loading the files. Hence, it is a good idea to divide your dataset into sub-folders or blocks. For example, '/content/train data/block-id-1/id-1.npy', ... , '/content/train data/block-id-3/id-642.npy', etc. I generally store 320  examples per block.</p>
+
+					<p>The default sort function in Python is not a natural sort. For instance, 'id-100.npy' would be placed before 'id-2.npy'. Therefore, below is a function to perform natural sort.</p>
+
+					<script src="https://gist.github.com/satvik-venkatesh/b2419dabcf8458daf3161e33f777d391.js?file=natural-sort.py"></script>
+
+
+					<p>You can store the labels and training as NumPy files within the same folder. For examples, '/content/train data/block-id-1/id-label-1.npy'. Below is a code snippet to load the train and validation data using the glob module. </p>
+
+					<script src="https://gist.github.com/satvik-venkatesh/b2419dabcf8458daf3161e33f777d391.js?file=train-load.py"></script>
+
+					<script src="https://gist.github.com/satvik-venkatesh/b2419dabcf8458daf3161e33f777d391.js?file=val-load.py"></script>
+
+					<p>As you can see in the code snippet, the train and validation set is defined inside a dictionary called 'partition'. The partition for the test set would be similar to the validation set. The generators for train and validation are declared as shown below.</p>
+
+					<script src="https://gist.github.com/satvik-venkatesh/b2419dabcf8458daf3161e33f777d391.js?file=create-gen.py"></script>
+
+					<h4>3. &nbsp; Save the database as a zipped file</h4>
+					<p> As per my experience, the best way to store data in Google drive is as a .zip file. When you want to import the database into the Colab notebook, there are two ways of doing it. (1) Extract the zip file directly from the drive, as shown below, or (2) use a !wget command to download it to the notebook and subsequently extract it. In order to do this, you will have to create a shareable link of the zip file in drive. The first method is most convenient and works fine in most cases. However, if your zip file is >10 GB and you extract it directly from the drive multiple times, then your Google Drive API begins to fail. There are some posts in stack overflow that speak about the Read/Write limits imposed by the Google Drive API. However, this is a problem that I have personally encountered as well. Hence, if you have too much data, think about using the !wget command.</p> 
+
+					<script src="https://gist.github.com/satvik-venkatesh/b2419dabcf8458daf3161e33f777d391.js?file=extract-train.py"></script>
+
+
+					<p>It is convenient to store the train, validation, and test sets as separate .zip files. This way you can easily extract them into separate directories in the virtual machine.</p>
+
+					<h4>4. &nbsp; Do not load the dataset directly from Google drive</h4>
+					<p>I learnt this the hard way. It might be tempting to store your dataset in Google Drive and load examples directly from it. In Google Colab, files are loaded from drive through the Google Drive API. The files are not stored on the virtual machine. Therefore, loading files for the data generator directly from Google Drive would lead to a major bottleneck while training your neural network.</p>
+
+					<h4>5. &nbsp; Some Failed Approaches</h4>
+					<p>Initially, when I was trying to load the NumPy arrays directly from Google Drive. A hack that I came up with was to load batches instead of individual files. This would reduce the number of files that Google Drive API has to load. For example, if the batch size was 128, each NumPy file would contain 128 examples. The problem with this approach is that there is no straightforward way to shuffle the data while training.</p>
+				</div>
+			</div>
+
+		</div> <!--- End Row -->
+	</div> <!--- End Narrow -->
+</div> <!--- End Jumbotron -->
+
+</div>
+<!--- End Blog Section -->
+
+
+
+
+<!--- Script Source Files -->
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+<!--- End of Script Source Files -->
+
+</body>
+</html>
