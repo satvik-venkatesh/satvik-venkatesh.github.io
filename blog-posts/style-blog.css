@@ -169,6 +169,12 @@ h3.heading-blog {
   padding-top: 1rem;
   text-align: left;
 }
+.blog-body h5 {
+  font-size: .9rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  text-align: left;
+}
 .code-block {
   width: 100%;
   padding: .1rem 1rem 0 1rem;

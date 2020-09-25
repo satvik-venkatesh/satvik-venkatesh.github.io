@@ -14,7 +14,7 @@
 
 <!--- Navigation -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-	<a class="navbar-brand" href="../index.html#home"><img src="../img/piano3.png"></a>
+	<a class="navbar-brand" href="index.html#home"><img src="img/piano3.png"></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -22,19 +22,19 @@
 	<div class="collapse navbar-collapse" id="navbarResponsive">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="../index.html#home">Home</a>				
+				<a class="nav-link" href="index.html#home">Home</a>				
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="../index.html#publications">Publications</a>				
+				<a class="nav-link" href="index.html#publications">Publications</a>				
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="../index.html#music">Music</a>				
+				<a class="nav-link" href="index.html#music">Music</a>				
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="../index.html#about">About me</a>				
+				<a class="nav-link" href="index.html#about">About me</a>				
 			</li>			
 			<li class="nav-item">
-				<a class="nav-link" href="#blog-post">Blog</a>
+				<a class="nav-link" href="#blog-main">Blog</a>
 		</ul>
 	</div>
 </nav>
@@ -43,34 +43,45 @@
 
 
 <!--- Start Blog Section -->
-<div id="blog-post">
+<div id="blog-main">
 
 <!--- Start Jumbotron -->
 <div class="jumbotron text-center">
+	<div class="narrow">
 
-		<div class="bg-dark">
 		<div class="col-12">
 			<h2 class="heading-blog">Research Blog</h2>
 			<div class="heading-underline"></div>			
 		</div>
 		<div>
-			<a class="btn btn-outline-light btn-lg" href="http://github.com/satvik-venkatesh/data-gen-keras" target="_blank"> <span class="fas fa-random"></span> Open Random Article</a>
+			<button class="btn btn-outline-dark btn-lg" onclick="openLink()"> <span class="fas fa-random"></span>&nbsp; Random Article</button>
 
 		</div>
-		</div>
-	<div class="narrow">
-		<div class="row text-center">
+
+		<div class="row text-left">
 
 			<div class="col-md-4">
 
 				<div class="blogs">
 				<a href="blog-posts/data-gen-keras.html">
 					<h3>Data Generators with Keras and Tensorflow on Google Colab</h3>
-
-					<p>This blog post is a tutorial on using data generators with Keras on Google Colab. Using data generators with Google Colab was trickier than I expected. For example, the delay while directly loading files from Google drive. Therefore, this post explains some of the dos and don'ts while using data generators with Google Colab.</p>
+					<h4>25-9-20</h4>
+					<p>A tutorial on using data generators with Keras on Google Colab. Using data generators with Google Colab was trickier than I expected. This post explains some of the dos and don'ts while using data generators with Google Colab.</p>
 				</div>
 				</a>
 			</div>
+
+			<div class="col-md-4">
+
+				<div class="blogs">
+				<a href="blog-posts/ars-hackathon.html">
+					<h3>AIxMusic hackathon organised by ARS Electronica</h3>
+					<h4>25-9-20</h4>
+					<p>This was my first hackathon. I speak about my experiences and learnings from it.</p>
+				</div>
+				</a>
+			</div>
+
 
 		</div> <!--- End Row -->
 
@@ -89,6 +100,7 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+<script src="functions.js"></script>
 <!--- End of Script Source Files -->
 
 </body>

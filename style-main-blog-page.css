@@ -76,7 +76,6 @@ body {
   border-radius: .4rem;
 /*  padding: .6rem 1.3rem;*/
   font-size: 1.1rem;
-  margin-bottom: 3rem;
 }
 
 
@@ -84,8 +83,9 @@ body {
 
 .jumbotron {
   margin-bottom: 0;
-  padding: 0rem 0 3.5rem;
+  padding: 2rem 0 3.5rem;
   border-radius: 0; 
+/*  background-color: rgba(0, 0, 0, 1.0);*/
 }
 
 h3.heading {
@@ -105,7 +105,8 @@ h3.heading {
 }
 .blogs h3 {
   font-size: 1.3rem;
-  text-transform: uppercase;
+/*  text-transform: uppercase;*/
+  font-weight: 700;
   padding-top: 1rem;
 }
 .blogs p {
@@ -122,13 +123,12 @@ h3.heading {
 /*  padding-bottom: 3rem;
   padding-top: 3rem;*/
   border: .1rem solid rgba(120, 120, 120, 1.0);
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: .3rem;
+  background-color: rgba(255, 255, 255, 1.0);
+  border-radius: .6rem;
   margin-right: auto;
   margin-left: auto;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  text-align: left;
   transition: transform .2s;
 }
 
@@ -148,8 +148,8 @@ h3.heading {
 
 }
 
-.blog: hover {
-
+.blogs h3 {
+  text-align: left;
 }
 
 
@@ -182,8 +182,6 @@ h2.heading-blog {
   font-size: 2.2 rem;
   font-weight: 700;
   margin-bottom: 1.9rem;
-  padding-top: 5rem;
-  color: white;
 }
 
 h3.heading-blog {
@@ -202,10 +200,10 @@ h3.heading-blog {
 .blog-body p {
   font-size: 1.1rem;
 }
-.blog-body h4 {
-  font-size: 1.5rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+.blogs h4 {
+  font-size: .9rem;
+/*  padding-bottom: 1rem;
+  padding-top: 1rem;*/
   text-align: left;
 }
 .code-block {
