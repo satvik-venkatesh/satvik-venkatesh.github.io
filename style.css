@@ -78,6 +78,14 @@ body {
   font-size: 1.1rem;
 }
 
+.btn-lgg {
+/*  border-width: medium;*/
+  border-radius: .4rem;
+/*  padding: .6rem 1.3rem;*/
+  font-size: 1.1rem;
+}
+
+
 /*--- Blog Section --*/
 .blog p {
   font-size: 1.1rem;
