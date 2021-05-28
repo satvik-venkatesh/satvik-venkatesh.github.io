@@ -143,8 +143,15 @@ h3.heading {
 
 /*--- Music Section --*/
 
-.fixed {
+.guitar {
   background-image: url(img/guitar1.png);
+}
+
+.conf {
+  background-image: url(img/conf.png);
+}
+
+.fixed {
   z-index: -1;
 }
 .dark {
